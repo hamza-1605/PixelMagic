@@ -43,18 +43,19 @@ imgInput.addEventListener('change' , (event) => {
                if(img.naturalWidth > img.naturalHeight){
                     imgDisplay.style.width = '80vw' ;
                     imgDisplay.style.height = 'auto' ;
-                    console.log('width bigger')
+                    // console.log('width bigger')
                     // if(window.innerWidth < 450){
                         //     imgDisplay.style.width = '250px' ;
                         // }
                 }
                 else{
                     imgDisplay.style.height = '70vh' ;
-                    if(window.innerWidth < '1000px'){
-                        imgDisplay.style.height = '60vh' ;
-                    }
                     imgDisplay.style.width = 'auto' ;
-                    console.log('Height bigger')
+                    if(window.innerWidth < '1000px'){
+                        imgDisplay.style.width = '90vw' ;
+                        imgDisplay.style.height = 'auto' ;
+                    }
+                    // console.log('Height bigger')
                 }
             }
 
