@@ -46,6 +46,9 @@ imgInput.addEventListener('change' , (event) => {
             }
             else{
                 imgDisplay.style.height = '300px' ;
+                if(window.innerWidth < 450){
+                    imgDisplay.style.height = '250px' ;
+                }
             }
         }
 
