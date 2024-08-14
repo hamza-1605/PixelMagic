@@ -50,6 +50,9 @@ imgInput.addEventListener('change' , (event) => {
                 }
                 else{
                     imgDisplay.style.height = '70vh' ;
+                    if(window.innerWidth < '1000px'){
+                        imgDisplay.style.height = '60vh' ;
+                    }
                     imgDisplay.style.width = 'auto' ;
                     console.log('Height bigger')
                 }
