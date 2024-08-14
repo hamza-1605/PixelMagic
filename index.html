@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="/images/Magic.png" type="image/x-icon">
+    <title>PixelMagic - Free Picture Editing Website for your photos</title>
+</head>
+<body>
+    <header>
+        <img src="/images/Icon.png" alt="Image logo">
+        <p>PixelMagic</p>
+    </header>
+    <div id="container">
+        <div class="img">
+            <button id="welcome">Click here to upload an image you would like to process</button>
+            <input type="file" id="imgInput" accept="image/*" style="display: none;">
+        </div>
+        <div>
+            <img id="imgDisplay">
+            <canvas id="myCanvas"></canvas>
+        </div>
+        <div class="btn-box" id="box" style="display: none;">
+            <select name="options" id="options">
+                <option value="nope" selected disabled>--Choose an effect--</option>
+                <option value="Grayscale">Grayscale</option>
+                <option value="Negative">Negative</option>
+                <option value="Blur">Blur</option>
+                <option value="Mirror">Mirror</option>
+                <option value="Invert">Invert</option>
+                <option value="Original">Original</option>
+            </select>
+            <button id="process">Process</button>
+            <button id="downloadBtn"> Download Image </button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 All rights reserved by PixelMagic</p>
+        <table>
+            <tr>
+                <th>Developers</th>
+                <th>Roll No.</th>
+            </tr>
+            <tr>
+                <td>Muhammad Shehrooz</td>
+                <td>BSE-21208</td>
+            </tr>
+            <tr>
+                <td>Hamza Sajid</td>
+                <td>BSE-21219</td>
+            </tr>
+            <tr>
+                <td>Abdul Wahab</td>
+                <td>BSE-21229</td>
+            </tr>
+        </table>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+//  ********************************************************************************
+//                      Working of the 'selecting an image' button
+//  ********************************************************************************
+
+const imgInput = document.getElementById('imgInput') ;
+const picButton = document.getElementById('welcome');
+const box = document.getElementById('box') ;
+
+picButton.addEventListener('click' , () => {
+    imgInput.click() ;
+})
+
+
+
+
+//  ********************************************************************************
+//                      Reading the user picture and displaying it
+//  ********************************************************************************
+
+const imgDisplay = document.getElementById('imgDisplay'); 
+
+imgInput.addEventListener('change' , (event) => {
+    
+    const file = event.target.files[0] ;
+    
+    // console.log(event.target.files) ;
+    // console.log(event.target.files[0]) ;
+    // console.log(event.target.files[1]) ;
+    // console.log(file) ;
+    // console.log(file.type) ;
+
+    if( file && file.type.startsWith('image/')){
+
+        const reader = new FileReader() ;
+
+        reader.onload = (e) => {
+            
+            imgDisplay.src = e.target.result ;
+            imgDisplay.style.display = 'block' ;
+            
+            if(imgDisplay.style.width > imgDisplay.style.height){
+                imgDisplay.style.width = '400px' ;
+                if(window.innerWidth < 450){
+                    imgDisplay.style.width = '250px' ;
+                }
+            }
+            else{
+                imgDisplay.style.height = '300px' ;
+            }
+        }
+
+        reader.readAsDataURL(file) ;
+        box.style.display = 'flex' ;
+    }
+    else{
+        alert('Please select an image file.')
+    }
+    
+})
+
+
+
+
+
+//  ********************************************************************************
+//                   Applying the effect with the help of the button
+//  ********************************************************************************
+
+const options = document.getElementById('options') ;
+const process = document.getElementById('process') ;
+const canvas = document.getElementById('myCanvas') ;
+
+process.addEventListener('click' , () => {
+    const effect = options.value ;
+    // console.log(effect);
+    
+    switch( effect ){
+        case 'Original':
+            imgDisplay.style.filter = 'grayscale(0%)' ;
+            imgDisplay.style.filter = 'invert(0%)' ;
+            imgDisplay.style.filter = 'blur(0px)' ;
+            // imgDisplay.style.transform = 'scaleX(1)' ;
+            // imgDisplay.style.transform = 'scaleY(1)' ;
+            break;
+
+        case 'Grayscale':
+            imgDisplay.style.filter = 'grayscale(100%)' ;
+            break;
+            
+        case 'Negative':
+            imgDisplay.style.filter = 'invert(100%)' ;
+            break;
+                
+        case 'Blur':
+            imgDisplay.style.filter = 'blur(5px)' ;
+            break;
+                    
+        case 'Mirror':
+            if(imgDisplay.style.transform === 'scaleX(-1)'){
+                imgDisplay.style.transform = 'scaleX(1)'
+            }
+            else{
+                imgDisplay.style.transform = 'scaleX(-1)' ;
+            }
+            break;
+                        
+        case 'Invert':
+            if(imgDisplay.style.transform === 'scaleY(-1)'){
+                imgDisplay.style.transform = 'scaleY(1)'
+            }
+            else{
+                imgDisplay.style.transform = 'scaleY(-1)' ;
+            }
+            break;
+        
+        case 'nope':
+            process.style.cursor = 'not-allowed' ;
+            break;
+        }
+
+        if(options.value !== 'nope'){
+            dloadBtn.style.display = 'block' ;
+        }
+
+
+        // *****************************************************************
+        //               Image drawing on Canvas to download         
+        // *****************************************************************
+
+        canvas.width = imgDisplay.naturalWidth ;
+        canvas.height = imgDisplay.naturalHeight ;
+        
+        
+        const ctx = canvas.getContext('2d') ;
+        
+        ctx.filter = getComputedStyle(imgDisplay).filter ;
+        ctx.save() ;
+        
+        if( effect === 'Mirror' ){
+            ctx.scale( -1 , 1 ) ;
+            ctx.drawImage( imgDisplay, -canvas.width, 0, canvas.width, canvas.height) ;
+        } 
+        else if( effect === 'Invert' ){
+            ctx.scale( 1, -1 )
+            ctx.drawImage( imgDisplay, 0, -canvas.height, canvas.width, canvas.height) ;
+        } 
+        else{
+            ctx.drawImage( imgDisplay, 0, 0, canvas.width, canvas.height) ;
+        }
+        
+        ctx.restore() ;
+        
+})
+
+
+
+
+
+//  ********************************************************************************
+//                    Functionality of the Download Button
+//  ********************************************************************************
+
+const dloadBtn = document.getElementById('downloadBtn');
+
+dloadBtn.addEventListener('click' , () => {
+    if(options.value !== 'Original'){
+        const link = document.createElement('a') ;
+        // console.log(link) ;
+        link.download = 'PixelMagicPic.jpeg' ;
+        link.href = canvas.toDataURL();
+        link.click() ;
+    }
+})
+
+
+
+
+
+//  ********************************************************************************
+//            Disabling cursor if drop-down list is equal to orginal or null
+//  ********************************************************************************
+
+if(options.value === 'nope'){
+    process.style.cursor = 'not-allowed' ;
+    process.style.opacity = '0.6';
+    dloadBtn.style.cursor = 'not-allowed' ;
+    dloadBtn.style.opacity = '0.6';
+    dloadBtn.style.display = 'none' ;
+}
+    
+options.addEventListener( 'change' , () => {
+
+    if(options.value === 'Original'){
+        dloadBtn.style.cursor = 'not-allowed' ;
+        dloadBtn.style.opacity = '0.6';
+    } 
+    else{
+        process.style.cursor = 'pointer' ;
+        process.style.opacity = '1';
+        dloadBtn.style.cursor = 'pointer' ;
+        dloadBtn.style.opacity = '1';
+    }
+})
