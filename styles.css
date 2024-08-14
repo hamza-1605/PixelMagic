@@ -108,7 +108,7 @@ header img{
     padding: 3vh 0;
 }
 
-.btn-box button, select{
+.btn-box button, select, #resetBtn{
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -207,4 +207,15 @@ tr{
 
 td{
     padding-right: 2vw;
+}
+
+#resetBtn{
+    display: none;
+    background-color: #b90d0d;
+    color: white;
+}
+
+#resetBtn:hover{
+    background-color: #ff0c0c;
+    cursor: pointer;
 }
