@@ -40,13 +40,18 @@ imgInput.addEventListener('change' , (event) => {
 
             img.onload = (e) => {
 
-                if(img.naturalWidth > img.naturalHeight){
+               if(img.naturalWidth > img.naturalHeight){
                     imgDisplay.style.width = '80vw' ;
-                    console.log('width bigger') ;
+                    imgDisplay.style.height = 'auto' ;
+                    console.log('width bigger')
+                    // if(window.innerWidth < 450){
+                        //     imgDisplay.style.width = '250px' ;
+                        // }
                 }
                 else{
                     imgDisplay.style.height = '70vh' ;
-                    console.log('Height bigger');
+                    imgDisplay.style.width = 'auto' ;
+                    console.log('Height bigger')
                 }
             }
 
