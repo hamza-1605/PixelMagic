@@ -184,13 +184,11 @@ reset.addEventListener('click', () => {
 const dloadBtn = document.getElementById('downloadBtn');
 
 dloadBtn.addEventListener('click' , () => {
-    if(options.value !== 'Original'){
         const link = document.createElement('a') ;
         // console.log(link) ;
         link.download = 'PixelMagicPic.jpeg' ;
         link.href = canvas.toDataURL();
         link.click() ;
-    }
 })
 
 
@@ -204,18 +202,10 @@ dloadBtn.addEventListener('click' , () => {
 if(options.value === 'nope'){
     process.style.cursor = 'not-allowed' ;
     process.style.opacity = '0.6';
-    dloadBtn.style.cursor = 'not-allowed' ;
-    dloadBtn.style.opacity = '0.6';
     dloadBtn.style.display = 'none' ;
 }
     
 options.addEventListener( 'change' , () => {
-
-    if(options.value === 'Original'){
-        dloadBtn.style.cursor = 'not-allowed' ;
-        dloadBtn.style.opacity = '0.6';
-    } 
-    else{
         process.style.cursor = 'pointer' ;
         process.style.opacity = '1';
         dloadBtn.style.cursor = 'pointer' ;
