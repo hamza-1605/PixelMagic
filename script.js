@@ -35,18 +35,24 @@ imgInput.addEventListener('change' , (event) => {
 
         reader.onload = (e) => {
             
+            const img = new Image();
+            img.src = e.target.result ;
+
+            img.onload = (e) => {
+
+                if(img.naturalWidth > img.naturalHeight){
+                    imgDisplay.style.width = '80vw' ;
+                    console.log('width bigger') ;
+                }
+                else{
+                    imgDisplay.style.height = '70vh' ;
+                    console.log('Height bigger');
+                }
+            }
+
             imgDisplay.src = e.target.result ;
             imgDisplay.style.display = 'block' ;
             
-            if(imgDisplay.style.width > imgDisplay.style.height){
-                imgDisplay.style.width = '400px' ;
-                if(window.innerWidth < 450){
-                    imgDisplay.style.width = '80vh' ;
-                }
-            }
-            else{
-                imgDisplay.style.height = '300px' ;
-            }
         }
 
         reader.readAsDataURL(file) ;
