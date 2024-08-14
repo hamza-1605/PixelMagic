@@ -41,14 +41,11 @@ imgInput.addEventListener('change' , (event) => {
             if(imgDisplay.style.width > imgDisplay.style.height){
                 imgDisplay.style.width = '400px' ;
                 if(window.innerWidth < 450){
-                    imgDisplay.style.width = '250px' ;
+                    imgDisplay.style.width = '80vh' ;
                 }
             }
             else{
                 imgDisplay.style.height = '300px' ;
-                if(window.innerWidth < 450){
-                    imgDisplay.style.height = '250px' ;
-                }
             }
         }
 
