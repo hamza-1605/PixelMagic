@@ -93,8 +93,8 @@ process.addEventListener('click' , () => {
             imgDisplay.style.filter = 'grayscale(0%)' ;
             imgDisplay.style.filter = 'invert(0%)' ;
             imgDisplay.style.filter = 'blur(0px)' ;
-            // imgDisplay.style.transform = 'scaleX(1)' ;
-            // imgDisplay.style.transform = 'scaleY(1)' ;
+            imgDisplay.style.transform = 'scaleX(1)' ;
+            imgDisplay.style.transform = 'scaleY(1)' ;
             break;
 
         case 'Grayscale':
