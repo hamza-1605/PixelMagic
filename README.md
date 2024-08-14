@@ -1,1 +1,1 @@
-# Hello My Name is Hamza
+# Welcome to my PixelMagic Website
