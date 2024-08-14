@@ -84,20 +84,13 @@ imgInput.addEventListener('change' , (event) => {
 const options = document.getElementById('options') ;
 const process = document.getElementById('process') ;
 const canvas = document.getElementById('myCanvas') ;
+const reset = document.getElementById('resetBtn') ;
 
 process.addEventListener('click' , () => {
     const effect = options.value ;
     // console.log(effect);
     
     switch( effect ){
-        case 'Original':
-            imgDisplay.style.filter = 'grayscale(0%)' ;
-            imgDisplay.style.filter = 'invert(0%)' ;
-            imgDisplay.style.filter = 'blur(0px)' ;
-            imgDisplay.style.transform = 'scaleX(1)' ;
-            imgDisplay.style.transform = 'scaleY(1)' ;
-            break;
-
         case 'Grayscale':
             imgDisplay.style.filter = 'grayscale(100%)' ;
             break;
@@ -135,6 +128,7 @@ process.addEventListener('click' , () => {
 
         if(options.value !== 'nope'){
             dloadBtn.style.display = 'block' ;
+            reset.style.display = 'block' ;
         }
 
 
@@ -165,6 +159,18 @@ process.addEventListener('click' , () => {
         
         ctx.restore() ;
         
+})
+
+
+
+
+//  ********************************************************************************
+//                          Button to reset the effects 
+//  ********************************************************************************
+
+reset.addEventListener('click', () => {
+    imgDisplay.style.filter = 'grayscale(0%) invert(0%) blur(0px)' ;
+    imgDisplay.style.transform = 'scaleX(1) scaleY(1)' ;
 })
 
 
