@@ -106,13 +106,18 @@ header img{
 .btn-box{
     margin-top: 25px;
     padding: 3vh 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
+
 
 .btn-box button, select, #resetBtn{
     padding: 10px;
     border: none;
     border-radius: 10px;
-    margin-right: 20px;
     height: 40px;
     width: 220px;
     text-align: center;
@@ -120,7 +125,7 @@ header img{
     font-size: medium;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
     .btn-box{
         display: flex;
         flex-direction: column;
