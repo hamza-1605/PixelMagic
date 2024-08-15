@@ -173,6 +173,13 @@ process.addEventListener('click' , () => {
 reset.addEventListener('click', () => {
     imgDisplay.style.filter = 'grayscale(0%) invert(0%) blur(0px)' ;
     imgDisplay.style.transform = 'scaleX(1) scaleY(1)' ;
+
+    canvas.width = imgDisplay.naturalWidth ;
+    canvas.height = imgDisplay.naturalHeight ;        
+        
+    const ctx = canvas.getContext('2d') ;
+    
+    ctx.drawImage( imgDisplay, 0, 0, canvas.width, canvas.height) ;
 })
 
 
