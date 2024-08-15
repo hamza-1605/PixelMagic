@@ -88,7 +88,7 @@ header img{
     background-color: #0d073c;
     color: white;
     padding: 2vw;
-}
+}                   
 
 @media (max-width: 800px) {
     #welcome{
@@ -112,7 +112,6 @@ header img{
     align-items: center;
     gap: 10px;
 }
-
 
 .btn-box button, select, #resetBtn{
     padding: 10px;

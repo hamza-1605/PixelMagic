@@ -12,6 +12,7 @@ picButton.addEventListener('click' , () => {
 
 
 
+
 //  ********************************************************************************
 //                      Reading the user picture and displaying it
 //  ********************************************************************************
@@ -39,22 +40,21 @@ imgInput.addEventListener('change' , (event) => {
 
             img.onload = (e) => {
 
-               if(img.naturalWidth > img.naturalHeight){
-                    imgDisplay.style.width = '80vw' ;
+                if(img.naturalWidth > img.naturalHeight){
+                    imgDisplay.style.width = '60vw' ;
                     imgDisplay.style.height = 'auto' ;
-                    // console.log('width bigger')
+                    console.log('width bigger')
                     // if(window.innerWidth < 450){
                         //     imgDisplay.style.width = '250px' ;
                         // }
                 }
                 else{
                     imgDisplay.style.height = '70vh' ;
-                    imgDisplay.style.width = 'auto' ;
                     if(window.innerWidth < '1000px'){
-                        imgDisplay.style.width = '90vw' ;
-                        imgDisplay.style.height = 'auto' ;
+                        imgDisplay.style.height = '60vh' ;
                     }
-                    // console.log('Height bigger')
+                    imgDisplay.style.width = 'auto' ;
+                    console.log('Height bigger')
                 }
             }
 
@@ -62,7 +62,7 @@ imgInput.addEventListener('change' , (event) => {
             imgDisplay.style.display = 'block' ;
             
         }
-
+        
         reader.readAsDataURL(file) ;
         box.style.display = 'flex' ;
     }
@@ -89,28 +89,28 @@ process.addEventListener('click' , () => {
     const effect = options.value ;
     // console.log(effect);
     
-    switch( effect ){
+    switch( effect ){   
         case 'Grayscale':
             imgDisplay.style.filter = 'grayscale(100%)' ;
             break;
-            
+        
         case 'Negative':
             imgDisplay.style.filter = 'invert(100%)' ;
             break;
-                
+            
         case 'Blur':
             imgDisplay.style.filter = 'blur(5px)' ;
             break;
-                    
+                
         case 'Mirror':
             if(imgDisplay.style.transform === 'scaleX(-1)'){
-                imgDisplay.style.transform = 'scaleX(1)'
+            imgDisplay.style.transform = 'scaleX(1)'
             }
             else{
                 imgDisplay.style.transform = 'scaleX(-1)' ;
             }
             break;
-                        
+                    
         case 'Invert':
             if(imgDisplay.style.transform === 'scaleY(-1)'){
                 imgDisplay.style.transform = 'scaleY(1)'
@@ -163,8 +163,11 @@ process.addEventListener('click' , () => {
 
 
 
+
+
+
 //  ********************************************************************************
-//                          Button to reset the effects 
+//                       Function for button to reset the effects 
 //  ********************************************************************************
 
 reset.addEventListener('click', () => {
@@ -183,11 +186,13 @@ reset.addEventListener('click', () => {
 const dloadBtn = document.getElementById('downloadBtn');
 
 dloadBtn.addEventListener('click' , () => {
+    if(options.value !== 'Original'){
         const link = document.createElement('a') ;
         // console.log(link) ;
         link.download = 'PixelMagicPic.jpeg' ;
         link.href = canvas.toDataURL();
         link.click() ;
+    }
 })
 
 
@@ -201,10 +206,18 @@ dloadBtn.addEventListener('click' , () => {
 if(options.value === 'nope'){
     process.style.cursor = 'not-allowed' ;
     process.style.opacity = '0.6';
+    dloadBtn.style.cursor = 'not-allowed' ;
+    dloadBtn.style.opacity = '0.6';
     dloadBtn.style.display = 'none' ;
 }
     
 options.addEventListener( 'change' , () => {
+
+    if(options.value === 'Original'){
+        dloadBtn.style.cursor = 'not-allowed' ;
+        dloadBtn.style.opacity = '0.6';
+    } 
+    else{
         process.style.cursor = 'pointer' ;
         process.style.opacity = '1';
         dloadBtn.style.cursor = 'pointer' ;
